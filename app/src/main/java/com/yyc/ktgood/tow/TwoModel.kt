@@ -5,15 +5,32 @@ import com.yyc.baselib.http.BaseObserver
 import com.yyc.baselib.http.ServiceFactory
 import com.yyc.baselib.utils.L
 import com.yyc.wclib.http.User
+import com.yyc.wclib.mvp.MVPListener
 import com.yyc.wclib.utils.MyRxScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class TwoModel: TwoContract.TwoModel {
-    override fun getData() {
+    override fun getData(listener: MVPListener<User>) {
+        ServiceFactory.getService()
+                .login1()
+                .compose(MyRxScheduler.ioMain())
+                .subscribe(object : BaseObserver<User>(){
+                    override fun onSuccess(t: User?) {
+                        L.e("name: --- " + t!!.name + t!!.age)
+                        listener.onSuccess(t)
+                    }
+                    override fun onFail(msg: String) {
+                        super.onFail(msg)
+                        L.e("$msg")
+                    }
+                })
+    }
+
+    /*override fun getData() {
         Log.e("aa","３３TwoModel")
 
-       /* ServiceFactory.getService().login2()
+       *//* ServiceFactory.getService().login2()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (
@@ -27,11 +44,11 @@ class TwoModel: TwoContract.TwoModel {
                         {
                             L.e("onComplete")
                         }
-                )*/
+                )*//*
 
 
 
-        /*ServiceFactory.getService().login1()
+        *//*ServiceFactory.getService().login1()
 //                    .map(HttpResultFunc<User>())
 //                    .subscribeOn(Schedulers.io())
 //                    .observeOn(AndroidSchedulers.mainThread())
@@ -47,7 +64,7 @@ class TwoModel: TwoContract.TwoModel {
                         L.e("$msg")
                     }
                 })
-*/
+*//*
 
 
 
@@ -64,6 +81,6 @@ class TwoModel: TwoContract.TwoModel {
                         L.e("$msg")
                     }
                 })
-    }
+    }*/
 
 }
