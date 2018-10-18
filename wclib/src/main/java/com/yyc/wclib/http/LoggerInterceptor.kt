@@ -1,8 +1,8 @@
 package com.yyc.baselib.http
 
-import android.arch.core.BuildConfig
 
 import com.yyc.baselib.utils.L
+import com.yyc.wclib.BuildConfig
 
 import java.io.BufferedReader
 import java.io.IOException

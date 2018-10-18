@@ -1,8 +1,11 @@
 package com.yyc.ktgood.tow
 
 import android.util.Log
+import com.yyc.baselib.http.BaseObserver
 import com.yyc.baselib.http.ServiceFactory
 import com.yyc.baselib.utils.L
+import com.yyc.wclib.http.User
+import com.yyc.wclib.utils.MyRxScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -10,12 +13,13 @@ class TwoModel: TwoContract.TwoModel {
     override fun getData() {
         Log.e("aa","３３TwoModel")
 
-        ServiceFactory.getService().login2()
+       /* ServiceFactory.getService().login2()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (
                         {
                             L.e("onnext")
+
                         },
                         {
                             L.e("eoor")
@@ -23,7 +27,7 @@ class TwoModel: TwoContract.TwoModel {
                         {
                             L.e("onComplete")
                         }
-                )
+                )*/
 
 
 
@@ -47,7 +51,7 @@ class TwoModel: TwoContract.TwoModel {
 
 
 
-        /*ServiceFactory.getService()
+        ServiceFactory.getService()
                 .login1()
                 .compose(MyRxScheduler.ioMain())
                 .subscribe(object : BaseObserver<User>(){
@@ -59,7 +63,7 @@ class TwoModel: TwoContract.TwoModel {
                         super.onFail(msg)
                         L.e("$msg")
                     }
-                })*/
+                })
     }
 
 }

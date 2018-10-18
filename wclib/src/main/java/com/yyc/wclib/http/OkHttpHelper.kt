@@ -1,5 +1,7 @@
 package com.yyc.baselib.http
 
+import com.yyc.wclib.http.LoggingInterceptor
+import com.yyc.wclib.http.LoggingInterceptor2
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -29,7 +31,8 @@ class OkHttpHelper private constructor() {
                 .connectTimeout(connectTimeOut,timeUnit)
                 .readTimeout(readTimeOut,timeUnit)
                 .writeTimeout(writeTimeOut,timeUnit)
-                .addInterceptor(LoggerInterceptor())
+                .addInterceptor(LoggingInterceptor())
+//                .addInterceptor(LoggerInterceptor())
         okHttpClient = builder.build()
         return okHttpClient
     }
