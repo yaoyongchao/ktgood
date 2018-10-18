@@ -2,6 +2,8 @@ package com.yyc.ktgood
 
 import android.content.Intent
 import android.util.Log
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.yyc.baselib.http.BaseObserver
 import com.yyc.baselib.http.ServiceFactory
 import com.yyc.baselib.utils.L
@@ -11,7 +13,6 @@ import com.yyc.wclib.utils.MyRxScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-
 class MainActivity : BaseActivity() {
     override fun layoutId(): Int {
         return R.layout.activity_main
@@ -21,9 +22,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-        Log.e("aa","你好")
 
-        L.e("L---ni")
+        btn_router.setOnClickListener {
+            startActivity(Intent(this,ForeActivity::class.java))
+        }
 
         btn1.setOnClickListener {
             startActivity(Intent(this,TwoActivity::class.java))

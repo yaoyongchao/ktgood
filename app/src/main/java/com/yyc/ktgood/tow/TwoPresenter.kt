@@ -9,7 +9,7 @@ class TwoPresenter: TwoContract.TwoPresenter<TwoModel>() {
         Log.e("aa","222model: ")
         mModel?.getData(object : MVPListener<User> {
             override fun onSuccess(data: User) {
-                view.login()
+                view?.login()
 
             }
 
