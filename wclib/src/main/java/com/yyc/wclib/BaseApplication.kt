@@ -4,21 +4,20 @@ import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.yyc.baselib.utils.L
-import okhttp3.internal.Internal.instance
 
 /**
  * Author: Austin
  * Date: 2018/10/8
  * Description:
  */
-class BaseApplication: Application(){
+open class BaseApplication: Application(){
 
     override fun onCreate() {
         super.onCreate()
         initViews()
     }
 
-    private fun initViews() {
+    open fun initViews() {
         appContext = applicationContext
 //        instance = this
         L.initLogger()

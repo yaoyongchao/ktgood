@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
@@ -73,6 +73,9 @@ dependencies {
     //ARouter
     api 'com.alibaba:arouter-api:1.4.0'
     kapt 'com.alibaba:arouter-compiler:1.2.1'
+
+    //GreenDao3
+    api 'org.greenrobot:greendao:3.2.2' // add library
 
     // If you want to use Kotlin syntax
     /*api 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.2'

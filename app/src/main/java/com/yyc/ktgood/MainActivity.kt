@@ -2,18 +2,15 @@ package com.yyc.ktgood
 
 import android.content.Intent
 import android.util.Log
-import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
-import com.yyc.baselib.http.BaseObserver
 import com.yyc.baselib.http.ServiceFactory
 import com.yyc.baselib.utils.L
+import com.yyc.ktgood.entity.User
 import com.yyc.wclib.base.BaseActivity
-import com.yyc.wclib.http.User
-import com.yyc.wclib.utils.MyRxScheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity() {
+    var i = 1
     override fun layoutId(): Int {
         return R.layout.activity_main
     }
@@ -22,6 +19,20 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
+        btn_in.setOnClickListener {
+            var user: User = User()
+            user.age = i
+            user.name = "zs$i"
+            i++
+            WcApplication.mDaoSession.userDao.insert(user)
+        }
+
+        btn_check.setOnClickListener {
+            var list:List<User> = WcApplication.mDaoSession.userDao.loadAll()
+
+            for (u in list) L.e("user: name- ${u.name} --- age- ${u.age} --- id: ${u.id}")
+
+        }
 
         btn_router.setOnClickListener {
             startActivity(Intent(this,ForeActivity::class.java))
