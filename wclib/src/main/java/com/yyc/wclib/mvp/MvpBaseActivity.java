@@ -1,3 +1,4 @@
+/*
 package com.yyc.wclib.mvp;
 
 import android.os.Bundle;
@@ -18,12 +19,14 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
 
     }
 
+*/
 /*
     @Override
     public void initView() {
 
     }
-*/
+*//*
+
 
     @Override
     public void initData() {
@@ -36,3 +39,4 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
         mPresenter.dettachView();
     }
 }
+*/

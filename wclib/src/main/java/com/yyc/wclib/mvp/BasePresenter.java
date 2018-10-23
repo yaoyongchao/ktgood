@@ -5,7 +5,7 @@ import com.yyc.wclib.utils.CreatUtilOne;
 
 import java.lang.ref.WeakReference;
 
-public abstract class BasePresenter<M extends BaseModel,V /*extends BaseView*/> {
+public abstract class BasePresenter<M extends BaseModel,V extends BaseView> {
     public M mModel;
     private V mView;
     private WeakReference<V> mViewRef;

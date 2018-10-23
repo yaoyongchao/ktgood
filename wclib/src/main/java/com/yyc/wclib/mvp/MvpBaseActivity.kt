@@ -1,11 +1,10 @@
-/*
 package com.yyc.wclib.mvp
 
 import android.os.Bundle
 import android.util.Log
 import com.yyc.baselib.utils.CreatUtil
 import com.yyc.wclib.base.BaseActivity
-abstract class MvpBaseActivity<P : BasePresenter<*,*> >: BaseActivity(){
+abstract class MvpBaseActivity<V: BaseView,P : BasePresenter2<V,*> >: BaseActivity(){
     var mPresenter: P? =null//可空类型
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,8 +13,10 @@ abstract class MvpBaseActivity<P : BasePresenter<*,*> >: BaseActivity(){
         super.onCreate(savedInstanceState)
         Log.e("aa", "mPresenter: $mPresenter")
 //        mPresenter?.attachView(this)
-        mPresenter?.attachView(this)
+        mPresenter!!.bindView(this as V)
     }
+
+    public abstract fun initPresenter(): P
 
     override fun initView() {
     }
@@ -27,4 +28,4 @@ abstract class MvpBaseActivity<P : BasePresenter<*,*> >: BaseActivity(){
         super.onDestroy()
 //        mPresenter?.dettachView()
     }
-}*/
+}
