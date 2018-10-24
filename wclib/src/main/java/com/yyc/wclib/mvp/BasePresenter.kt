@@ -1,13 +1,21 @@
 package com.yyc.wclib.mvp
 
 import com.yyc.baselib.mvp.BaseModel
+import com.yyc.baselib.utils.CreatUtil
+import com.yyc.baselib.utils.L
 import java.lang.ref.WeakReference
 
-abstract class BasePresenter2<V: BaseView, M: BaseModel> {
+abstract class BasePresenter<V: BaseView, M: BaseModel> {
     var view: WeakReference<V>? = null
+    var mModel: M? = null
+    init {
+        mModel = CreatUtil.getT(this,0)
+        L.e("mModel: $mModel")
+    }
 
     fun bindView(view: V) {
         this.view = WeakReference(view)
+        L.e("view: $view" )
     }
 
     fun isBind(): Boolean {

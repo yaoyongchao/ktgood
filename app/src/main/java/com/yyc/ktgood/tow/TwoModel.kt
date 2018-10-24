@@ -1,17 +1,14 @@
 package com.yyc.ktgood.tow
 
-import android.util.Log
 import com.yyc.baselib.http.BaseObserver
 import com.yyc.baselib.http.ServiceFactory
 import com.yyc.baselib.utils.L
 import com.yyc.wclib.http.User
 import com.yyc.wclib.mvp.MVPListener
 import com.yyc.wclib.utils.MyRxScheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class TwoModel: TwoContract.TwoModel {
-    override fun getData(listener: MVPListener<User>) {
+    public override fun getData(listener: MVPListener<User>) {
         ServiceFactory.getService()
                 .login1()
                 .compose(MyRxScheduler.ioMain())
